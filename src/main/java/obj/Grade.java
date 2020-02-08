@@ -4,7 +4,6 @@ public class Grade {
 
     private String letter;
     private double number;
-    private String test;
 
     public Grade() {
         this("");
