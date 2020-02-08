@@ -4,7 +4,7 @@ This is an application that will allow people in CT Region 15 - specifically PHS
 
 Eventually I may expand it to create a more inclusive project, but for now I'm only going to keep it at this school system.
 
-### Plans
+## Plans
 
 As of right now, I'm working on the ability to add classes to days.
 We have a weird schedule and I have to account for that.
