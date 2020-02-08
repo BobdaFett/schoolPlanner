@@ -14,8 +14,6 @@ public class Main extends Application {
 
     public void start(Stage s) {
 
-
-
         String test = "This is a test";
 
         GridPane gp = new GridPane();
