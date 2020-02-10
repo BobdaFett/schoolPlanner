@@ -4,6 +4,12 @@ This is an application that will allow people in CT Region 15 - specifically PHS
 
 Eventually I may expand it to create a more inclusive project, but for now I'm only going to keep it at this school system.
 
+##Features
+
+The user currently has the ability to create a class with a name and display it. They can also edit it because it's the same method.
+
+That's currently everything.
+
 ## Plans
 
 As of right now, I'm working on the ability to add classes to days.

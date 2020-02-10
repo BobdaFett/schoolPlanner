@@ -88,7 +88,7 @@ public class Cla {
      *
      * @return Returns a String of the letter grade.
      */
-    public String getLetterGrade() {
+    public String getGrade() {
         return letterGrade;
     }
     
@@ -97,7 +97,7 @@ public class Cla {
      *
      * @param letterGrade The new letter grade of the cla.
      */
-    public void setLetterGrade(String letterGrade) {
+    public void setGrade(String letterGrade) {
         this.letterGrade = letterGrade;
     }
     

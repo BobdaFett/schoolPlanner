@@ -21,7 +21,9 @@ public class fxMain extends Application {
     
     public static TabPane tabPane = new TabPane();
     public static ObservableList<Cla> classes = FXCollections.observableArrayList();
-    public static Menu edit = new Menu("_Edit");
+    public static Cla selected;
+    
+    public static Stage stage;
 
     public static void open(String[] args) {
         Application.launch(args);
@@ -29,17 +31,20 @@ public class fxMain extends Application {
 
     public void start(Stage s) {
         
+        stage = s;
+        selected = null;
+        
         GridPane gp = new GridPane();
-    
-        MenuBar menuBar = getMenus();
         
         tabPane.getTabs().addAll(tabs.getTabs());
         
-        gp.add(tabPane,0,0);
+        gp.add(getMenus(), 0,0);
+        gp.add(tabPane,0,1);
         
         Scene sc = new Scene(gp);
-        s.setScene(sc);
-        s.show();
+        stage.setScene(sc);
+        stage.setMaximized(true);
+        stage.show();
 
     }
     
@@ -47,15 +52,19 @@ public class fxMain extends Application {
         
         MenuBar menuBar = new MenuBar();
     
-        Menu file = new Menu();
+        Menu file = new Menu("File");
         MenuItem file1 = new MenuItem("_Create...");
+        file1.setOnAction(e -> fxEditAssignment.start(null));
         MenuItem file2 = new MenuItem("Exit");
+        file2.setOnAction(e -> stage.close());
         file.getItems().addAll(file1, file2);
         
-        // this is for the edit Menu
+        Menu edit = new Menu("Edit");
         MenuItem edit1 = new MenuItem("_Edit...");
         MenuItem edit2 = new MenuItem("_Delete...");
         edit.getItems().addAll(edit1, edit2);
+        
+        menuBar.getMenus().addAll(file, edit);
         
         return menuBar;
         

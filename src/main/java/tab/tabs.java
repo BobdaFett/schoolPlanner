@@ -13,7 +13,7 @@ import javafx.scene.control.Tab;
 public class tabs {
     public static ObservableList<Tab> getTabs() {
         ObservableList<Tab> tabs = FXCollections.observableArrayList();
-        tabs.add(tabClass.tab());
+        tabs.addAll(tabClass.tab(), tabDay.tab());
         return tabs;
     }
 }

@@ -1,12 +1,14 @@
 package tab;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.GridPane;
 import obj.Cla;
+import util.fxEditAssignment;
+import util.fxMain;
+
+import static util.fxMain.selected;
 
 import static util.fxMain.classes;
 
@@ -18,7 +20,7 @@ import static util.fxMain.classes;
  */
 public class tabClass {
     
-    private static TableView<Cla> tableView;
+    public static TableView<Cla> tableView;
     
     @SuppressWarnings("unchecked")
     public static Tab tab() {
@@ -35,12 +37,30 @@ public class tabClass {
         
         tableView.getColumns().addAll(name, grade);
         
+        tableView.prefHeightProperty().bind(fxMain.stage.heightProperty());
+        tableView.prefWidthProperty().bind(fxMain.stage.widthProperty());
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        
+        tableView.setOnMouseClicked(mouseEvent -> {
+            if(mouseEvent.getButton() == MouseButton.PRIMARY)
+                selected = tableView.getSelectionModel().getSelectedItem();
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2)
+                fxEditAssignment.start(selected);
+        });
+        
         GridPane gridPane = new GridPane();
         gridPane.add(tableView,0,0);
         
         t.setContent(gridPane);
+        t.setClosable(false);
         
         return t;
+    }
+    
+    public static void update() {
+        tableView.refresh();
     }
     
 }
