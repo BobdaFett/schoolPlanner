@@ -45,7 +45,7 @@ public class fxMain extends Application {
         stage.setScene(sc);
         stage.setMaximized(true);
         stage.show();
-
+        
     }
     
     public MenuBar getMenus() {

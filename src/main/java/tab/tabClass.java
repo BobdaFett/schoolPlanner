@@ -5,7 +5,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.GridPane;
 import obj.Cla;
-import util.fxEditAssignment;
+import util.fxEditClass;
 import util.fxMain;
 
 import static util.fxMain.selected;
@@ -47,7 +47,7 @@ public class tabClass {
             if(mouseEvent.getButton() == MouseButton.PRIMARY)
                 selected = tableView.getSelectionModel().getSelectedItem();
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2)
-                fxEditAssignment.start(selected);
+                fxEditClass.start(selected);
         });
         
         GridPane gridPane = new GridPane();
