@@ -33,4 +33,10 @@ public class Grade {
     public void setNumber(double number) {
         this.number = number;
     }
+    
+    public String getGrade() {
+        
+        return letter + " " + Double.toString(number);
+        
+    }
 }

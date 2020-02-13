@@ -1,11 +1,14 @@
 package obj;
 
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cla {
     
     private String name;
-    private ArrayList<Assignment> assignments;
+    private ObservableList<Assignment> assignments;
     private String letterGrade;
     
     /**
@@ -21,7 +24,7 @@ public class Cla {
      * @param name The name of the cla created.
      */
     public Cla(String name) {
-        this(name, new ArrayList<Assignment>());
+        this.name = name;
     }
     
     /**
@@ -30,7 +33,7 @@ public class Cla {
      * @param name The name of the cla created.
      * @param assignments An ArrayList of Assignment objects.
      */
-    public Cla(String name, ArrayList<Assignment> assignments) {
+    public Cla(String name, ObservableList<Assignment> assignments) {
         this(name, assignments, "");
     }
     
@@ -41,7 +44,7 @@ public class Cla {
      * @param assignments An ArrayList of Assignment objects.
      * @param letterGrade The overall letter grade that you have in the cla.
      */
-    public Cla(String name, ArrayList<Assignment> assignments, String letterGrade) {
+    public Cla(String name, ObservableList<Assignment> assignments, String letterGrade) {
         this.name = name;
         this.assignments = assignments;
         this.letterGrade = letterGrade;
@@ -70,7 +73,7 @@ public class Cla {
      *
      * @return Returns an ArrayList<Assignment> of Assignment objects.
      */
-    public ArrayList<Assignment> getAssignments() {
+    public ObservableList<Assignment> getAssignments() {
         return assignments;
     }
     
@@ -79,7 +82,11 @@ public class Cla {
      *
      * @param assignment The ArrayList<Assignment> to be set.
      */
-    public void setAssignments(Assignment assignment) {
+    public void setAssignments(ObservableList<Assignment> assignment) {
+        this.assignments = assignment;
+    }
+    
+    public void addAssignment(Assignment assignment) {
         this.assignments.add(assignment);
     }
     

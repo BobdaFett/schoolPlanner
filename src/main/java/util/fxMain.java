@@ -53,8 +53,8 @@ public class fxMain extends Application {
         MenuBar menuBar = new MenuBar();
     
         Menu file = new Menu("File");
-        MenuItem file1 = new MenuItem("_Create...");
-        file1.setOnAction(e -> fxEditAssignment.start(null));
+        Menu file1 = new Menu("_Create Class...");
+        file1.setOnAction(e -> fxEditClass.start(null));
         MenuItem file2 = new MenuItem("Exit");
         file2.setOnAction(e -> stage.close());
         file.getItems().addAll(file1, file2);

@@ -4,6 +4,7 @@ public class Assignment {
 
     private String name;
     private Grade grade;
+    private String type;
 
     public Assignment() {
         this("");
@@ -14,8 +15,13 @@ public class Assignment {
     }
 
     public Assignment(String name, Grade grade) {
+        this(name, grade, "");
+    }
+    
+    public Assignment(String name, Grade grade, String type) {
         this.name = name;
         this.grade = grade;
+        this.type = type;
     }
 
     public String getName() {
@@ -26,11 +32,19 @@ public class Assignment {
         this.name = name;
     }
 
-    public Grade getGrade() {
-        return grade;
+    public String getGrade() {
+        return grade.getGrade();
     }
 
     public void setGrade(Grade grade) {
         this.grade = grade;
+    }
+    
+    public String getType() {
+        return this.type;
+    }
+    
+    public void setType(String type) {
+        this.type = type;
     }
 }
