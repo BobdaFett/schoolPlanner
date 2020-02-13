@@ -3,14 +3,20 @@ package util;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import obj.Assignment;
 import obj.Cla;
 import tab.tabClass;
+
+import static util.fxMain.selected;
 
 /**
  * This creates the Dialog window to edit an Assignment.
@@ -26,6 +32,7 @@ public class fxEditClass {
     
     private static Cla cl;
     private static Stage stage;
+    private static Assignment selected;
     
     /**
      * Initialize the base window and get the contents.
@@ -39,7 +46,7 @@ public class fxEditClass {
         if(stage != null && stage.isShowing()) stage.close(); // ensures that there's only one stage - you can only edit one class at a time.
         stage = new Stage();
         stage.setTitle((c == null) ? "Create Class" : "Edit Class " + c.getName());
-    
+
         Button assignment = new Button((c == null) ? "Create Assignments..." : "Edit Assignments...");
         
         Button sub = new Button((c == null) ? "Create" : "Save");
@@ -49,10 +56,8 @@ public class fxEditClass {
         TextField nta = new TextField();
         nta.setText(cl.getName());
         nta.textProperty().addListener((e, o, n) -> cl.setName(n)); // (e, o, n) = (ActionEvent, oldValue, newValue)
-    
-        assignment.setOnAction(e -> {
-            fxEditAssignment.start(null, cl);
-        });
+
+        assignment.setOnAction(e -> fxEditAssignment.start(null, cl)); // TODO need to change this method
         
         sub.setOnAction(e -> {
             if(c == null) fxMain.classes.add(cl);
@@ -63,11 +68,19 @@ public class fxEditClass {
         GridPane gridPane = new GridPane();
         gridPane.add(nt, 0, 0);
         gridPane.add(nta, 1, 0);
-        gridPane.add(assignment, 0, 1);
-        gridPane.add(sub, 1, 2);
-        
+        gridPane.add(assignment, 0, 1, 2, 1);
+        gridPane.add(sub, 0, 2, 2, 1);
+
+        gridPane.add(editAssignment(), 3, 0, 1, 3);
+
+        GridPane.setHalignment(sub, HPos.LEFT);
+        GridPane.setValignment(sub, VPos.BOTTOM);
+
         GridPane.setHalignment(nt, HPos.RIGHT);
-        
+
+        GridPane.setHalignment(assignment, HPos.LEFT);
+        GridPane.setValignment(assignment, VPos.TOP);
+
         gridPane.setPadding(new Insets(10));
         gridPane.setVgap(10);
         gridPane.setHgap(10);
@@ -76,6 +89,35 @@ public class fxEditClass {
         stage.setScene(scene);
         stage.showAndWait();
         
+    }
+
+    @SuppressWarnings("unchecked")
+    public static VBox editAssignment() {
+
+        selected = new Assignment();
+
+        TableView<Assignment> tableView = new TableView<Assignment>(cl.getAssignments());
+
+        TableColumn<Assignment, String> name = new TableColumn<Assignment, String>("Name");
+        name.setCellValueFactory(new PropertyValueFactory<Assignment, String>("name"));
+
+        TableColumn<Assignment, String> type = new TableColumn<Assignment, String>("Type");
+        type.setCellValueFactory(new PropertyValueFactory<Assignment, String>("type"));
+
+        TableColumn<Assignment, String> grade = new TableColumn<Assignment, String>("Grade");
+        grade.setCellValueFactory(new PropertyValueFactory<Assignment, String>("grade"));
+
+        tableView.getColumns().addAll(name, type, grade);
+
+        tableView.setOnMouseClicked(mouseEvent -> {
+            if(mouseEvent.getButton() == MouseButton.PRIMARY)
+                selected = tableView.getSelectionModel().getSelectedItem();
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2)
+                fxEditAssignment.start(selected, cl);
+        });
+
+        return new VBox(tableView);
+
     }
 
 }

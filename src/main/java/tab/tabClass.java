@@ -9,7 +9,7 @@ import util.fxEditClass;
 import util.fxMain;
 
 import static util.fxMain.selected;
-
+import static util.fxMain.stage;
 import static util.fxMain.classes;
 
 /**
@@ -37,8 +37,8 @@ public class tabClass {
         
         tableView.getColumns().addAll(name, grade);
         
-        tableView.prefHeightProperty().bind(fxMain.stage.heightProperty());
-        tableView.prefWidthProperty().bind(fxMain.stage.widthProperty());
+        tableView.prefHeightProperty().bind(stage.heightProperty());
+        tableView.prefWidthProperty().bind(stage.widthProperty());
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);

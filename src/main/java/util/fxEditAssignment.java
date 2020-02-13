@@ -12,7 +12,9 @@ import obj.Grade;
 public class fxEditAssignment {
 
     public static Assignment assignment;
-    
+
+    // TODO This class is about to be completely changed, it's going to be a simple dialog box with a spinner and two TextFields.
+
     @SuppressWarnings("unchecked")
     public static void start(Assignment a, Cla cla) {
         
@@ -52,6 +54,7 @@ public class fxEditAssignment {
         Label type = new Label("Type: ");
         TextField nameText  = new TextField();
         Spinner<Integer> gradeText = new Spinner<Integer>();
+        gradeText.setEditable(true);
         TextField typeText = new TextField();
         
         GridPane gridPane = new GridPane();
