@@ -33,6 +33,7 @@ public class fxEditClass {
     private static Cla cl;
     private static Stage stage;
     private static Assignment selected;
+    private static TableView<Assignment> tableView;
     
     /**
      * Initialize the base window and get the contents.
@@ -47,7 +48,7 @@ public class fxEditClass {
         stage = new Stage();
         stage.setTitle((c == null) ? "Create Class" : "Edit Class " + c.getName());
 
-        Button assignment = new Button((c == null) ? "Create Assignments..." : "Edit Assignments...");
+        Button assignment = new Button((c == null || c.getAssignments().size() == 0) ? "Create Assignments..." : "Edit Assignments...");
         
         Button sub = new Button((c == null) ? "Create" : "Save");
         sub.setDefaultButton(true);
@@ -57,7 +58,7 @@ public class fxEditClass {
         nta.setText(cl.getName());
         nta.textProperty().addListener((e, o, n) -> cl.setName(n)); // (e, o, n) = (ActionEvent, oldValue, newValue)
 
-        assignment.setOnAction(e -> fxEditAssignment.start(null, cl)); // TODO need to change this method
+        assignment.setOnAction(e -> fxEditAssignment.start(null, cl)); // TODO need to change this method - this will only allow you to create an assignment, not look at them.
         
         sub.setOnAction(e -> {
             if(c == null) fxMain.classes.add(cl);
@@ -96,7 +97,7 @@ public class fxEditClass {
 
         selected = new Assignment();
 
-        TableView<Assignment> tableView = new TableView<Assignment>(cl.getAssignments());
+        tableView = new TableView<Assignment>(cl.getAssignments());
 
         TableColumn<Assignment, String> name = new TableColumn<Assignment, String>("Name");
         name.setCellValueFactory(new PropertyValueFactory<Assignment, String>("name"));
@@ -118,6 +119,10 @@ public class fxEditClass {
 
         return new VBox(tableView);
 
+    }
+
+    public static void update() {
+        tableView.refresh();
     }
 
 }

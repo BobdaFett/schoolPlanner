@@ -3,7 +3,7 @@ package obj;
 public class Assignment {
 
     private String name;
-    private Grade grade;
+    private double grade;
     private String type;
 
     public Assignment() {
@@ -11,14 +11,14 @@ public class Assignment {
     }
 
     public Assignment(String name) {
-        this(name, new Grade());
+        this(name, 0.0);
     }
 
-    public Assignment(String name, Grade grade) {
+    public Assignment(String name, Double grade) {
         this(name, grade, "");
     }
     
-    public Assignment(String name, Grade grade, String type) {
+    public Assignment(String name, Double grade, String type) {
         this.name = name;
         this.grade = grade;
         this.type = type;
@@ -32,11 +32,11 @@ public class Assignment {
         this.name = name;
     }
 
-    public String getGrade() {
-        return grade.getGrade();
+    public Double getGrade() {
+        return this.grade;
     }
 
-    public void setGrade(Grade grade) {
+    public void setGrade(Double grade) {
         this.grade = grade;
     }
     
