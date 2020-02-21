@@ -14,7 +14,8 @@ public class fxEditAssignment {
     public static Cla cl;
 
     // TODO This class needs a way to use the buttons that were created - they don't currently do anything and I don't know why
-    // TODO This class can only currently create a class because of fxEditClass - this will need to be changed to be able to select what you can edit.
+    // TODO This class can only currently create a class because of fxEditClass - this will need to be changed to be
+    //  able to select what you can edit.
 
     @SuppressWarnings("unchecked")
     public static void start(Assignment a, Cla cla) {

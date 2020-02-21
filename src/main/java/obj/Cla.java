@@ -1,5 +1,6 @@
 package obj;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 public class Cla {
     
     private String name;
-    private ObservableList<Assignment> assignments;
+    private ObservableList<Assignment> assignments = FXCollections.observableArrayList();
     private String letterGrade;
     
     /**
@@ -24,7 +25,7 @@ public class Cla {
      * @param name The name of the cla created.
      */
     public Cla(String name) {
-        this.name = name;
+        this(name, FXCollections.observableArrayList());
     }
     
     /**
