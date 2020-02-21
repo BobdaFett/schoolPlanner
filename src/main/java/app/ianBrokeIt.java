@@ -23,7 +23,12 @@ public class ianBrokeIt {
         // TODO just for organisation, I like to have all of my ints initialized at once.
         int mid = (arr.length - 1) / 2;
         int end = arr.length - 1;
+
+        // TODO This isn't the bottom index - this is the first value, in this case 1
         int start = arr[0];
+
+        // This is the initialization fixed.
+//      int mid = (arr.length - 1) / 2, end = arr.length - 1, start = 0;
         
         // TODO This boolean could be changed - I used a do while loop instead of using the if statement you used, but
         //  you would have to change the value of this as well to ensure there's not an infinite loop.
@@ -31,22 +36,18 @@ public class ianBrokeIt {
         
         // TODO This looks like it's an infinite loop - its argument doesn't ever change.
         while (indexReturned != true) {
-            
-            // Only happens if the number is less than the mid value.
+
             if (num < arr[mid]) {
                 end = mid - 1;
                 mid = end / 2;
                 
                 // TODO Why is this if statement here? You should just put it at the end of this while loop.
                 if (mid == num) return arr[mid];
-            }
-            
-            else if (num > arr[mid])
-            {
+            } else if (num > arr[mid]) {
                 start = mid + 1;
                 
-                // TODO This will create an error - This isn't actually the mid value. This would be below the min value,
-                //  meaning that it's inaccessible to the max.
+                // TODO This will create an error - This wouldn't be the mid value. This would be below the min value,
+                //  meaning that the max becomes unusable.
                 mid = start / 2;
                 
                 // TODO Why is this if statement here? You should just put it at the end of this while loop.
