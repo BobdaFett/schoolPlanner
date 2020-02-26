@@ -8,20 +8,25 @@ import obj.Cla;
 
 import java.util.Optional;
 
+import static util.fxEditClass.cl; // This makes it so that the method will only work off of what fxEditClass is editing.
+
 public class fxEditAssignment {
 
     public static Assignment assignment;
-    public static Cla cl;
 
     // TODO This class needs a way to use the buttons that were created - they don't currently do anything and I don't know why
     // TODO This class can only currently create a class because of fxEditClass - this will need to be changed to be
     //  able to select what you can edit.
 
     @SuppressWarnings("unchecked")
-    public static void start(Assignment a, Cla cla) {
+    public static void start(Assignment a) {
         
         assignment = (a == null) ? new Assignment() : a;
-        cl = cla;
+
+        int[][] something = new int[2][2];
+        for(int[] some : something) {
+
+        }
 
         Dialog add = new Dialog();
 

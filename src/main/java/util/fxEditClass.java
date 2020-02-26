@@ -30,7 +30,7 @@ public class fxEditClass {
      * TODO Create an area for the creation of Assignment objects. This means that you can get the assignments and create/edit them from here.
      */
     
-    private static Cla cl;
+    public static Cla cl;
     private static Stage stage;
     private static Assignment selected;
     private static TableView<Assignment> tableView;
@@ -58,7 +58,7 @@ public class fxEditClass {
         nta.setText(cl.getName());
         nta.textProperty().addListener((e, o, n) -> cl.setName(n)); // (e, o, n) = (ActionEvent, oldValue, newValue)
 
-        assignment.setOnAction(e -> fxEditAssignment.start(null, cl)); // TODO need to change this method - this will only allow you to create an assignment, not look at them.
+        assignment.setOnAction(e -> fxEditAssignment.start(null)); // TODO need to change this method - this will only allow you to create an assignment, not look at them.
         
         sub.setOnAction(e -> {
             if(c == null) fxMain.classes.add(cl);
@@ -88,7 +88,7 @@ public class fxEditClass {
         
         Scene scene = new Scene(gridPane);
         stage.setScene(scene);
-        stage.showAndWait();
+        stage.show();
         
     }
 
@@ -98,6 +98,8 @@ public class fxEditClass {
         selected = new Assignment();
 
         tableView = new TableView<Assignment>(cl.getAssignments());
+
+        // TODO I don't think that this can call the getName/getType/getGrade methods on the Assignments in the list.
 
         TableColumn<Assignment, String> name = new TableColumn<Assignment, String>("Name");
         name.setCellValueFactory(new PropertyValueFactory<Assignment, String>("name"));
@@ -114,7 +116,7 @@ public class fxEditClass {
             if(mouseEvent.getButton() == MouseButton.PRIMARY)
                 selected = tableView.getSelectionModel().getSelectedItem();
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2)
-                fxEditAssignment.start(selected, cl);
+                fxEditAssignment.start(selected);
         });
 
         return new VBox(tableView);
