@@ -47,4 +47,31 @@ public class arrayTests {
         return true;
     }
 
+    // This is the ap question that was assigned.
+
+    public static final int BLACK = 0;
+    public static final int WHITE = 255;
+
+    public static int[][] pixelValues;
+
+    public static int countWhitePixels() {
+        int count = 0;
+        for(int[] i : pixelValues)
+            for(int j : i)
+                if(j == WHITE) count++;
+
+        return count;
+    }
+
+    public static void processImage() {
+        for(int i = 0; i < pixelValues.length - 2; i++) {
+            for(int j = 0; j < pixelValues[0].length - 2; j++) {
+                pixelValues[i][j] -= pixelValues[i+2][j+2];
+                if(pixelValues[i][j] < BLACK)
+                    pixelValues[i][j] = BLACK;
+            }
+        }
+    }
+
+
 }

@@ -33,24 +33,21 @@ public class fxEditAssignment {
         add.setTitle((a == null) ? "Create Assignment" : "Edit Assignment");
 
         Label content = new Label("Enter information below.");
-        Label name = new Label("Name: ");
-        Label grade = new Label("Grade: ");
-        Label type = new Label("Type: ");
         TextField nameText  = new TextField(assignment.getName());
         nameText.textProperty()
                 .addListener((e, o, n) -> assignment.setName(n));
         Spinner<Double> gradeText = new Spinner<Double>();
-        gradeText.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0,100,1));
+        gradeText.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0,100,1)); // start at 0, max of 100, increment by 1
         gradeText.valueProperty()
                 .addListener((e, o, n) -> assignment.setGrade(n));
         gradeText.setEditable(true);
         TextField typeText = new TextField();
 
         GridPane gridPane = new GridPane();
-        gridPane.add(content, 0, 0);
-        gridPane.add(name, 0, 1);
-        gridPane.add(grade, 0, 2);
-        gridPane.add(type, 0, 3);
+        gridPane.add(new Label("Enter information below."), 0, 0);
+        gridPane.add(new Label("Name: "), 0, 1);
+        gridPane.add(new Label("Grade: "), 0, 2);
+        gridPane.add(new Label("Type: "), 0, 3);
 
         gridPane.add(nameText, 1, 1);
         gridPane.add(gradeText, 1, 2);
