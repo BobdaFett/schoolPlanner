@@ -18,6 +18,8 @@ public class fxEditAssignment {
     // TODO This class can only currently create a class because of fxEditClass - this will need to be changed to be
     //  able to select what you can edit.
 
+    // TODO I'm thinking that I could create this method (essentially) as part of a class.
+
     @SuppressWarnings("unchecked")
     public static void start(Assignment a) {
         

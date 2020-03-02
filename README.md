@@ -17,3 +17,6 @@ We have a weird schedule and I have to account for that.
 This means that days are going to have classes, and that will be it for now - just a basic calendar.
 
 At some point, the ability to add the assignments that you have for homework will be added, but a basic framework is essential first.
+
+
+This is in a very early testing stage, and will not be accepting pull requests - if anyone finds it :D
