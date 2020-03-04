@@ -97,26 +97,14 @@ public class fxEditClass {
 
         selected = new Assignment();
 
-        tableView = new TableView<Assignment>(cl.getAssignments());
-
-        // TODO I don't think that this can call the getName/getType/getGrade methods on the Assignments in the list.
-
-        TableColumn<Assignment, String> name = new TableColumn<Assignment, String>("Name");
-        name.setCellValueFactory(new PropertyValueFactory<Assignment, String>("name"));
-
-        TableColumn<Assignment, String> type = new TableColumn<Assignment, String>("Type");
-        type.setCellValueFactory(new PropertyValueFactory<Assignment, String>("type"));
-
-        TableColumn<Assignment, String> grade = new TableColumn<Assignment, String>("Grade");
-        grade.setCellValueFactory(new PropertyValueFactory<Assignment, String>("grade"));
-
-        tableView.getColumns().addAll(name, type, grade);
+        tableView = cl.getAssignmentWindow();
 
         tableView.setOnMouseClicked(mouseEvent -> {
             if(mouseEvent.getButton() == MouseButton.PRIMARY)
                 selected = tableView.getSelectionModel().getSelectedItem();
-            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2)
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) {
                 fxEditAssignment.start(selected);
+            }
         });
 
         return new VBox(tableView);

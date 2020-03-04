@@ -105,7 +105,7 @@ public class Cla {
         return letterGrade;
     }
 
-    public TableView getGradeWindow() {
+    public TableView getAssignmentWindow() {
 
         Assignment selected = new Assignment();
 
@@ -122,13 +122,7 @@ public class Cla {
 
         tableView.getColumns().addAll(name, type, grade);
 
-        tableView.setOnMouseClicked(mouseEvent -> {
-            if(mouseEvent.getButton() == MouseButton.PRIMARY)
-                selected = tableView.getSelectionModel().getSelectedItem();
-            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) {
-                fxEditAssignment.start(selected);
-            }
-        });
+        return tableView;
 
     }
     
