@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. If you steal this code, Satan will rain down your throat with hot acid and kill your firstborn.
+ */
+
 package obj;
 
 import javafx.collections.FXCollections;
@@ -16,6 +20,7 @@ public class Cla {
     private String name;
     private ObservableList<Assignment> assignments = FXCollections.observableArrayList();
     private String letterGrade;
+    private static TableView<Assignment> tableView;
     
     /**
      * Creates a cla object.
@@ -26,11 +31,12 @@ public class Cla {
     
     /**
      * Creates a cla object.
+     * Removed calls to other constructors - seems to be a possible source of bugs.
      *
      * @param name The name of the cla created.
      */
     public Cla(String name) {
-        this(name, FXCollections.observableArrayList());
+        this.name = name;
     }
     
     /**
@@ -84,14 +90,18 @@ public class Cla {
     }
     
     /**
-     * Set the Assignments in a cla.
+     * Set the list of Assignments in a cla.
      *
-     * @param assignment The ArrayList<Assignment> to be set.
+     * @param assignments The ObservableList<Assignment> to be set.
      */
-    public void setAssignments(ObservableList<Assignment> assignment) {
-        this.assignments = assignment;
+    public void setAssignments(ObservableList<Assignment> assignments) {
+        this.assignments = assignments;
     }
-    
+
+    /**
+     * Add an Assignment to the list of Assignments.
+     * @param assignment
+     */
     public void addAssignment(Assignment assignment) {
         this.assignments.add(assignment);
     }
@@ -105,11 +115,20 @@ public class Cla {
         return letterGrade;
     }
 
+
+    /**
+     * Maybe this isn't the best idea, but it should work.
+     * This returns a full TableView that displays all of the assignments that have been created in this specific class object.
+     * As of right now, nothing seems to work, it just displays a TableView that has the columns but no Assignments.
+     *
+     * I'll attempt to keep using this method, but it may be a possible bug.
+     * @return
+     */
     public TableView getAssignmentWindow() {
 
         Assignment selected = new Assignment();
 
-        TableView<Assignment> tableView = new TableView<Assignment>(getAssignments());
+        tableView = new TableView<Assignment>(getAssignments());
 
         TableColumn<Assignment, String> name = new TableColumn<Assignment, String>("Name");
         name.setCellValueFactory(new PropertyValueFactory<Assignment, String>("name"));
@@ -124,6 +143,10 @@ public class Cla {
 
         return tableView;
 
+    }
+
+    public static void refresh() {
+        tableView.refresh();
     }
     
     /**

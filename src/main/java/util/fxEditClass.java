@@ -1,12 +1,14 @@
+/*
+ * Copyright (c) 2020. If you steal this code, Satan will rain down your throat with hot acid and kill your firstborn.
+ */
+
 package util;
 
-import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -16,18 +18,19 @@ import obj.Assignment;
 import obj.Cla;
 import tab.tabClass;
 
-import static util.fxMain.selected;
-
 /**
  * This creates the Dialog window to edit an Assignment.
  *
- * @author BobdaFettx
+ * @author BobdaFett
  */
 
 public class fxEditClass {
     
     /**
      * TODO Create an area for the creation of Assignment objects. This means that you can get the assignments and create/edit them from here.
+     *
+     * TODO Make sure that this changes into a dialog - I don't want people changing other windows while this is open, that will create bugs.
+     *  How do you create a dialog?
      */
     
     public static Cla cl;
@@ -97,20 +100,21 @@ public class fxEditClass {
 
         selected = new Assignment();
 
-        tableView = cl.getAssignmentWindow();
+        tableView = cl.getAssignmentWindow(); // get the TableView from the object that was called for this class.
 
         tableView.setOnMouseClicked(mouseEvent -> {
-            if(mouseEvent.getButton() == MouseButton.PRIMARY)
-                selected = tableView.getSelectionModel().getSelectedItem();
-            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) {
-                fxEditAssignment.start(selected);
-            }
+            if(mouseEvent.getButton() == MouseButton.PRIMARY) selected = tableView.getSelectionModel().getSelectedItem();
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) fxEditAssignment.start(selected);
         });
 
         return new VBox(tableView);
 
     }
 
+    /**
+     * Should call the TableView from the Cla object again - this means that the values should update.
+     * Theoretically would show the classes that you created.
+     */
     public static void update() {
         tableView.refresh();
     }

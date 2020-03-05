@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. If you steal this code, Satan will rain down your throat with hot acid and kill your firstborn.
+ */
+
 package util;
 
 import javafx.geometry.HPos;
@@ -72,6 +76,7 @@ public class fxEditAssignment {
         Optional<ButtonType> sub = add.showAndWait();
         if(sub.get() == ButtonType.OK) {
             if(a == null) cl.addAssignment(assignment);
+            cl.refresh();
             fxEditClass.update();
         }
         else add.close();
