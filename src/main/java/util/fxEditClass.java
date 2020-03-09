@@ -47,7 +47,7 @@ public class fxEditClass {
      */
     public static void start(Cla c) {
     
-        cl = (c != null) ? c : new Cla();
+        cl = (c == null) ? new Cla() : c;
         
         if(stage != null && stage.isShowing()) stage.close(); // ensures that there's only one stage - you can only edit one class at a time.
         stage = new Stage();
@@ -63,7 +63,7 @@ public class fxEditClass {
         nta.setText(cl.getName());
         nta.textProperty().addListener((e, o, n) -> cl.setName(n)); // (e, o, n) = (ActionEvent, oldValue, newValue)
 
-        assignment.setOnAction(e -> fxEditAssignment.start(null)); // TODO need to change this method - this will only allow you to create an assignment, not look at them.
+        assignment.setOnAction(e -> fxEditAssignment.tryAgain(null)); // TODO need to change this method - this will only allow you to create an assignment, not look at them.
         
         sub.setOnAction(e -> {
             if(c == null) fxMain.classes.add(cl);
@@ -114,11 +114,18 @@ public class fxEditClass {
             if (mouseEvent.getButton() == MouseButton.PRIMARY)
                 selected = tableView.getSelectionModel().getSelectedItem();
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2)
-                fxEditAssignment.start(selected);
+                fxEditAssignment.tryAgain(selected);
         });
 
         return new VBox(tableView);
 
+    }
+
+    public static void refresh() {
+        tableView.refresh();
+
+        System.out.println("You got to this point A."); // It gets here... but it doesn't seem to actually update the TableView.
+        // TODO Maybe put the other edit class inside of this one? That way I don't have to create a static object.
     }
 
     /**

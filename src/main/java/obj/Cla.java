@@ -9,11 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import util.fxEditAssignment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Cla {
     
@@ -154,8 +149,12 @@ public class Cla {
      *
      * @param letterGrade The new letter grade of the cla.
      */
+
+    // TODO THIS METHOD IS NEVER BEING RUN
     public void setGrade(String letterGrade) {
         this.letterGrade = letterGrade;
+
+        System.out.println("You got to this point.");
     }
     
 }
