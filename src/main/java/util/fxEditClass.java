@@ -8,7 +8,9 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -88,13 +90,19 @@ public class fxEditClass {
         gridPane.setPadding(new Insets(10));
         gridPane.setVgap(10);
         gridPane.setHgap(10);
-        
+
         Scene scene = new Scene(gridPane);
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
+    /**
+     * Doesn't do anything but get the TableView from the Cla object and return it inside of a VBox.
+     * Now that I think about this, it could possibly create a bug, but shouldn't be a problem.
+     *
+     * @return VBox with a TableView on the inside of it.
+     */
     @SuppressWarnings("unchecked")
     public static VBox editAssignment() {
 
@@ -103,8 +111,10 @@ public class fxEditClass {
         tableView = cl.getAssignmentWindow(); // get the TableView from the object that was called for this class.
 
         tableView.setOnMouseClicked(mouseEvent -> {
-            if(mouseEvent.getButton() == MouseButton.PRIMARY) selected = tableView.getSelectionModel().getSelectedItem();
-            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) fxEditAssignment.start(selected);
+            if (mouseEvent.getButton() == MouseButton.PRIMARY)
+                selected = tableView.getSelectionModel().getSelectedItem();
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2)
+                fxEditAssignment.start(selected);
         });
 
         return new VBox(tableView);

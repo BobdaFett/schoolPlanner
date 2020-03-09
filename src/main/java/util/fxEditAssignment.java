@@ -8,11 +8,10 @@ import javafx.geometry.HPos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import obj.Assignment;
-import obj.Cla;
 
 import java.util.Optional;
 
-import static util.fxEditClass.cl; // This makes it so that the method will only work off of what fxEditClass is editing.
+import static util.fxEditClass.cl;
 
 public class fxEditAssignment {
 
@@ -73,6 +72,7 @@ public class fxEditAssignment {
                 .addAll(buttonOK, buttonCancel);
 
         //I don't think that this is the right way to do this...?
+        // TODO EDIT: This is definitely not the right way to do this.
         Optional<ButtonType> sub = add.showAndWait();
         if(sub.get() == ButtonType.OK) {
             if(a == null) cl.addAssignment(assignment);
