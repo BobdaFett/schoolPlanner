@@ -112,11 +112,13 @@ public class Cla {
 
 
     /**
-     * Maybe this isn't the best idea, but it should work.
-     * This returns a full TableView that displays all of the assignments that have been created in this specific class object.
-     * As of right now, nothing seems to work, it just displays a TableView that has the columns but no Assignments.
+     * <p>This returns a full TableView that displays all of the assignments that have been created in this specific class object.</p>
+     * <p>As of right now, nothing seems to work, it just displays a TableView that has the columns but no Assignments.</p>
      *
-     * I'll attempt to keep using this method, but it may be a possible bug.
+     * <p>I'll attempt to keep using this method, but it may be a possible bug.</p>
+     *
+     * <i>Maybe this isn't the best idea, but it should work.</i>
+     *
      * @return
      */
     public TableView getAssignmentWindow() {

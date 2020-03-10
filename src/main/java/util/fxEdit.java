@@ -6,13 +6,7 @@
 
 package util;
 
-import javafx.scene.control.Dialog;
-
-/**
- * This is just a testing class - I'm going to attempt to create a custom Dialog class.
- */
-
-public class fxEdit extends Dialog {
+public class fxEdit {
 
 
 }
