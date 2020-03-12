@@ -121,7 +121,7 @@ public class Cla {
      *
      * @return
      */
-    public TableView getAssignmentWindow() {
+    public TableView<Assignment> getAssignmentWindow() {
 
         Assignment selected = new Assignment();
 

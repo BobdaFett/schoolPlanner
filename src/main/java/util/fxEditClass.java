@@ -21,7 +21,7 @@ import obj.Cla;
 import tab.tabClass;
 
 /**
- * This creates the Dialog window to edit an Assignment.
+ * This creates the Dialog window needed to edit an Assignment.
  *
  * @author BobdaFett
  */
@@ -39,9 +39,11 @@ public class fxEditClass {
     private static Stage stage;
     private static Assignment selected;
     private static TableView<Assignment> tableView;
-    
+
     /**
      * Initialize the base window and get the contents.
+     * <p></p>
+     * <p>This creates a window that has all of the functions that the user would need.</p>
      *
      * @param c The Class to be edited.
      */
@@ -99,7 +101,7 @@ public class fxEditClass {
 
     /**
      * Doesn't do anything but get the TableView from the Cla object and return it inside of a VBox.
-     * Now that I think about this, it could possibly create a bug, but shouldn't be a problem.
+     * <p><i>Now that I think about this, it could possibly create a bug, but shouldn't be a problem.</i></p>
      *
      * @return VBox with a TableView on the inside of it.
      */
@@ -121,19 +123,16 @@ public class fxEditClass {
 
     }
 
+    /**
+     * Refresh the TableView in the window.
+     * <p></p>
+     * <p>This currently does not work. It doesn't actually update or refresh anything.</p>
+     */
     public static void refresh() {
         tableView.refresh();
 
         System.out.println("You got to this point A."); // It gets here... but it doesn't seem to actually update the TableView.
         // TODO Maybe put the other edit class inside of this one? That way I don't have to create a static object.
-    }
-
-    /**
-     * Should call the TableView from the Cla object again - this means that the values should update.
-     * Theoretically would show the classes that you created.
-     */
-    public static void update() {
-        tableView.refresh();
     }
 
 }
